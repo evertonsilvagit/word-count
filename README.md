@@ -10,3 +10,4 @@ Esta aplicação permite aos usuários inserir uma frase e analisar a frequênci
 - **JSF**
 - **PrimeFaces**
 - **Maven**
+- **WildFly 10**
