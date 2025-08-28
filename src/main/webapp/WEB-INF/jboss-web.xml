@@ -1,0 +1,3 @@
+<jboss-web>
+    <context-root>/word-count</context-root>
+</jboss-web>
