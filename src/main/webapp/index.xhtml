@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+ 	xmlns:f="http://xmlns.jcp.org/jsf/core"
+ 	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+<meta charset="UTF-8" />
+<title>Contador de palavras</title>
+
+</h:head>
+
+<h:body>
+	<p:messages id="msgs" autoUpdate="true" />
+    <h:form id="formulario">
+        <p:panelGrid columns="2">
+
+            <p:outputLabel value="Escreva uma frase:" for="phrase"/>
+            <p:inputText id="phrase" value="#{wordCounterBean.phrase}" required="true" requiredMessage="O campo frase não pode ficar vazio!"/>
+
+            <p:commandButton value="Analisar"
+                             action="#{wordCounterBean.analyze}"
+                             update="resultado"/>
+        </p:panelGrid>
+
+        <h:panelGroup id="resultado" layout="block" style="margin-top:20px;">
+            <h:outputText value="Palavras distintas: #{wordCounterBean.distinctWordCount}"
+                          rendered="#{not empty wordCounterBean.wordCount}"/>
+
+            <p:dataTable value="#{wordCounterBean.wordCount.entrySet()}" var="entry"
+                         rendered="#{not empty wordCounterBean.wordCount}"
+                         style="margin-top:10px;">
+                         
+                <p:column headerText="Palavra">#{entry.key}</p:column>
+                <p:column headerText="Ocorrências">#{entry.value}</p:column>
+            </p:dataTable>
+        </h:panelGroup>
+    </h:form>
+</h:body>
+
+</html>
